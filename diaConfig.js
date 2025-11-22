@@ -56,7 +56,7 @@ class DialogConf {
     //    ENr 2: set value, 
     //           display OVERVIEW dialog => NSNr 1
     //    ENr 3: display OVERVIEW dialog => NSNr 1
-      [[-1,-1],[-1,-1],[1,4],[1,5],[-1,-1]],
+      [[-1,-1],[-1,-1],[2,4],[1,5],[-1,-1]],
     // SNr 3 HALT
       [[-1,-1],[-1,-1],[-1,-1],[-1,-1],[-1,-1]]
     ];
@@ -87,14 +87,7 @@ class DialogConf {
         this.divShowModify.style("display","block");
       }, 
     // 4
-      () => {
-        this.divShowModify.style("display","none");
-        this.divShowModify = undefined;
-        this.cfgArray[this.elenr].setValue();
-        this.divShowOverview = createDiv();
-        this.makeShowOverview();
-        this.divShowOverview.style("display","block");
-      },
+      () => {this.cfgArray[this.elenr].setValue();},
     // 5
       () => {
         this.divShowModify.style("display","none");
@@ -229,10 +222,10 @@ class DialogConfSlider {
       "white",undefined);
       div_.child(bName);
     y += addy;
-    let bValue = graphics.makeButton(
+    this.bValue = graphics.makeButton(
       " "+this.obj.getValue(),x,y,
       "white",undefined);
-    div_.child(bValue);
+    div_.child(this.bValue);
     y += addy;
     let bSet = graphics.makeButton(
       "SET",x,y,"yellow",
@@ -261,6 +254,7 @@ class DialogConfSlider {
   }
   setValue() {
     let x = this.xType.value();
+    this.bValue.html(""+x);
     this.obj.setValue(x);
   }
 }
