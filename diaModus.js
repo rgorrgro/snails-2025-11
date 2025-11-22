@@ -40,7 +40,12 @@ class DialogModus {
         this.divShowModify.style("display","block");
       },
     // 2
-      () => {this.setValue();}, 
+      //() => {this.setValue();}, 
+      () => {
+        this.setValue();
+        //this.divShowModify.style("display","none");
+        //dialogMain.auto.eveCall(5,0,0);
+      },
     // 3
       () => {
         this.divShowModify.style("display","none");
@@ -62,9 +67,9 @@ class DialogModus {
     div_.child(bName);
     y += addy;
     //
-    let bValue = graphics.makeButton(
+    this.bValue = graphics.makeButton(
       " "+data.modus.getName(),x,y,"white",undefined);
-    div_.child(bValue);
+    div_.child(this.bValue);
     y += addy;
     //
     let bSet = graphics.makeButton(
@@ -89,5 +94,6 @@ class DialogModus {
   setValue() {
     let x = this.xType.value();
     data.modus.setValue(x);
+    this.bValue.html(data.modus.getName());
   }
 }
