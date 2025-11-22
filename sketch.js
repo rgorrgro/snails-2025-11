@@ -31,12 +31,11 @@ let clipDraw = true;
 //
 function setup() {
   hlp = new Help();
-  tst = new Test("main", true, 1);
+  tst = new Test("main", false, 1);
   graphics = new Graphics();
   json = new JSONObject();
   data = new Data();
   data.format.setValue(4);
-  tst.off();
   frameRate(data.frames.getValue());
   colorMode(RGB, 255);
   data.bgcolor.setValueRandomly();
@@ -45,6 +44,9 @@ function setup() {
   canvas = createCanvas(
     data.format.getWidth(), 
     data.format.getHeight());
+  tst.on();
+  data.test("SNAILS");
+  tst.off();
   background(data.bgcolor.getValue());
   // Dialog
   dialogMain = new DialogMain();
