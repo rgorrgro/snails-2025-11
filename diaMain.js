@@ -71,8 +71,11 @@ class DialogMain {
       },
       // 4
       () => {
-        this.divMain.style("display", "block");
+        //this.divMain.style("display", "block");
         dialogConf = undefined;
+        this.divMain = createDiv();
+        this.makeDivMain();
+        this.divMain.style("display", "block");
       },
       // 5
       () => {
@@ -81,8 +84,11 @@ class DialogMain {
       },
       // 6
       () => {
-        this.divMain.style("display", "block");
+        //this.divMain.style("display", "block");
         dialogModus = undefined;
+        this.divMain = createDiv();
+        this.makeDivMain();
+        this.divMain.style("display", "block");
       },
       // 7
       () => {
