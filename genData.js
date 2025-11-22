@@ -10,8 +10,8 @@ class Data {
     this.sml = new DataSnailMinLength(1,1,5);
     this.format = new DataFormat(4); // handy portrait
     this.buttonsize = new DataButtonSize();
-    this.rectsize = new DataRectsize(50,15,200);//75,15,200);
-    this.linesize = new DataLinesize(8,1,16);
+    this.rectsize = new DataRectsize(140,15,200);
+    this.linesize = new DataLinesize(8,1,40);
     this.modus = new DataModus(2);
     this.test("genData 1");
   }
@@ -28,33 +28,6 @@ class Data {
     this.linesize.test();
     this.modus.test();
   }
-  /*
-  toJSON() {
-    let s1 = '{';
-    s1 += '\"recSize\":'+data.rec.getSize()+',\n';
-    s1 += '\"recX\":'+data.rec.getX()+',\n';
-    s1 += '\"recY\":'+data.rec.getY()+',\n';
-    s1 += '\"lineSize\":'+data.etc.getLineSize()+',\n';
-    s1 += '\"centralizer\":['
-      +data.etc.centralizer.x+','
-      +data.etc.centralizer.y+',0]}';
-    s1 = json.jsonCorrectString(s1);
-    return(s1);
-  }
-  fromJSON(s_) {
-    let o = JSON.parse(s_);
-    data.col.setBgName(o.colBg);
-    data.col.setLineName(o.colLine);
-    background(data.col.getBgValue());
-    data.rec.setSize(o.recSize);
-    data.rec.setX(o.recX);
-    data.rec.setY(o.recY);
-    data.etc.setLineSize(o.lineSize);
-    data.etc.setCentralizer(o.centralizer[0],
-      o.centralizer[1]);
-    tst.print(0,"Global from JSON",data.toJSON());
-  }
-  */
 }
 //
 //
@@ -111,8 +84,12 @@ class DataSlider {
                   :(x_>this.max_?this.max:x_));
   }
   setValue(x_) {
-    this.value = (x_<this.min?this.min
-                  :(x_>this.max_?this.max:x_));
+    if (x_<this.min) { this.value = this.min; 
+    } else {
+      if (x_>this.max) { this.value = this.max; 
+      } else { this.value = x_;
+      }     
+    }
   }
   getValue() {return(this.value);}
   getMin() {return(this.min);}
